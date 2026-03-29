@@ -573,14 +573,20 @@ function showSection(id) {
       </p>
     </div>
 
-    <!-- Code 2: Time-Dependent SED + LC -->
+    <!-- Code 3: Time-Dependent SED (under development) -->
     <div class="card" style="border-left:5px solid #145A32;">
-      <h3 style="color:#145A32; margin-bottom:10px;">&#9203; Time-Dependent One-Zone Leptonic Blazar Model</h3>
+      <h3 style="color:#145A32; margin-bottom:10px;">
+        &#9203; Time-Dependent One-Zone Leptonic Blazar SED Model
+        <span style="display:inline-block; margin-left:12px; padding:3px 10px;
+                     background:#fff3cd; color:#856404; border:1px solid #ffc107;
+                     border-radius:12px; font-size:0.75em; font-weight:700;
+                     vertical-align:middle;">&#128679; Currently Being Developed</span>
+      </h3>
       <p>
-        A time-dependent Fokker&ndash;Planck-based code for simultaneous fitting of a broadband SED
-        <em>and</em> a gamma-ray light curve during blazar flares. The electron distribution N(&gamma;, t)
-        is evolved kinetically over multiple days and convolved with the SED kernel at each time step,
-        enabling direct comparison with Fermi-LAT daily flux points.
+        A time-dependent, Fokker&ndash;Planck-based broadband SED fitting code for blazars.
+        The electron distribution N(&gamma;, t) is evolved kinetically via the FP equation and
+        convolved with the PyXSPEC <code>sscconv</code> radiation kernel, enabling
+        time-resolved SED fitting with simultaneous UVOT&nbsp;+&nbsp;XRT&nbsp;+&nbsp;Fermi-LAT data.
       </p>
       <p style="margin-top:10px;">
         <b>Fokker&ndash;Planck equation:</b>
@@ -590,18 +596,18 @@ function showSection(id) {
       <ul style="margin-top:10px; line-height:2.0;">
         <li><b>Numerical scheme:</b> Strang operator splitting (2nd-order) &mdash; method of characteristics
             (cooling) + implicit Crank&ndash;Nicolson (diffusion) + exponential integration (injection/escape)</li>
-        <li><b>Flare profile:</b> Asymmetric exponential rise &amp; decay injection normalisation Q<sub>0</sub>(t)</li>
-        <li><b>Fitting:</b> 4-stage lmfit Nelder&ndash;Mead pipeline &mdash; SED-only &rarr; LC-only &rarr;
-            joint (fast) &rarr; joint (full resolution)</li>
-        <li><b>Data:</b> Simultaneous UVOT + XRT + Fermi-LAT SED &amp; Fermi-LAT daily light curve</li>
-        <li><b>Resolution modes:</b> Fast (N<sub>g</sub>=100, &gamma;<sub>max</sub>=10<sup>6</sup>, ~0.3 s/eval)
-            and Full (N<sub>g</sub>=200, &gamma;<sub>max</sub>=10<sup>7</sup>, ~5 s/eval)</li>
+        <li><b>PyXSPEC model chain:</b> <code>tbabs * sscconv * fp_td_conv * bknpower</code> &mdash;
+            full absorption + SSC/EC radiation + FP time evolution</li>
+        <li><b>Fitting:</b> 3-stage XSPEC migrad pipeline &mdash; norm only &rarr; + injection shape
+            &rarr; + full jet parameters (Γ, B, θ, log<sub>10</sub>R, t<sub>obs</sub>)</li>
+        <li><b>Optional physics:</b> stochastic acceleration D(&gamma;) = D<sub>0</sub>&gamma;<sup>q</sup>,
+            self-consistent IC cooling update</li>
       </ul>
       <p style="margin-top:10px;">
         <b>Files:</b>
-        <code>fokker_planck_td.py</code> &mdash; FP solver &nbsp;&bull;&nbsp;
-        <code>flare_sed_models.py</code> &mdash; PyXSPEC model wrapper &nbsp;&bull;&nbsp;
-        <code>fit_flare.py</code> &mdash; 4-stage fitting pipeline
+        <code>fp_td.pyx</code> &mdash; Cython FP solver &amp; PyXSPEC convolution model &nbsp;&bull;&nbsp;
+        <code>fit_broadband.py</code> &mdash; 3-stage SED fitting script &nbsp;&bull;&nbsp;
+        <code>setup_fp_td.py</code> &mdash; build script
       </p>
       <p style="margin-top:14px;">
         <a href="https://github.com/shahzahir/BLAZAR-TIMEDEPENDENT-SED-LC-FITTING"
