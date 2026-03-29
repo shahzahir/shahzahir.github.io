@@ -549,18 +549,78 @@ function showSection(id) {
 <!-- ── Research Codes  ── -->
   <div id="research_codes" class="section">
     <h2>Research Codes</h2>
+
+    <!-- Code 1: Broadband SED -->
     <div class="card">
-      <ul>
-        <li><b>Blazar SED Modeling Code:</b> Numerical modeling of spectral energy distributions of blazars using user defined
-particle distribution and synchrotron, SSC and EC cooling.</li>
-        <li>
-<b>View the code on GitHub:</b>
-<a href="https://github.com/shahzahir/BLAZAR-BROADBAND-SED-CONVOLUTION-CODE" target="_blank">
-BLAZAR-BROADBAND-SED-CONVOLUTION-CODE
-</a>
-</li>
-      </ul>
+      <h3 style="color:#0b3c5d; margin-bottom:10px;">&#128202; Blazar Broadband SED Convolution Code</h3>
+      <p>
+        Numerical modeling of broadband spectral energy distributions (SEDs) of blazars using user-defined
+        particle distributions and synchrotron, SSC, and EC cooling. Implemented as a compiled
+        Cython/PyXSPEC additive model (<code>ssccon</code>) enabling statistically rigorous chi-squared
+        fitting within XSPEC.
+      </p>
+      <p style="margin-top:10px;">
+        <b>Key features:</b> Broken power-law injection &bull; synchrotron + SSC + EC emission &bull;
+        PyXSPEC model interface &bull; multi-group simultaneous fitting (UVOT + XRT + Fermi-LAT)
+      </p>
+      <p style="margin-top:12px;">
+        <a href="https://github.com/shahzahir/BLAZAR-BROADBAND-SED-CONVOLUTION-CODE"
+           target="_blank"
+           style="display:inline-block; padding:8px 16px; background:#1d70b8; color:white;
+                  border-radius:4px; text-decoration:none; font-weight:600; font-size:0.95em;">
+          &#128279; View on GitHub &rarr; BLAZAR-BROADBAND-SED-CONVOLUTION-CODE
+        </a>
+      </p>
     </div>
+
+    <!-- Code 2: Time-Dependent SED + LC -->
+    <div class="card" style="border-left:5px solid #145A32;">
+      <h3 style="color:#145A32; margin-bottom:10px;">&#9203; Time-Dependent One-Zone Leptonic Blazar Model</h3>
+      <p>
+        A time-dependent Fokker&ndash;Planck-based code for simultaneous fitting of a broadband SED
+        <em>and</em> a gamma-ray light curve during blazar flares. The electron distribution N(&gamma;, t)
+        is evolved kinetically over multiple days and convolved with the SED kernel at each time step,
+        enabling direct comparison with Fermi-LAT daily flux points.
+      </p>
+      <p style="margin-top:10px;">
+        <b>Fokker&ndash;Planck equation:</b>
+        &part;N/&part;t &nbsp;=&nbsp; &part;/&part;&gamma;[b(&gamma;)N &minus; D(&gamma;)&part;N/&part;&gamma;]
+        &nbsp;&minus;&nbsp; N/T<sub>esc</sub> &nbsp;+&nbsp; Q(&gamma;, t)
+      </p>
+      <ul style="margin-top:10px; line-height:2.0;">
+        <li><b>Numerical scheme:</b> Strang operator splitting (2nd-order) &mdash; method of characteristics
+            (cooling) + implicit Crank&ndash;Nicolson (diffusion) + exponential integration (injection/escape)</li>
+        <li><b>Flare profile:</b> Asymmetric exponential rise &amp; decay injection normalisation Q<sub>0</sub>(t)</li>
+        <li><b>Fitting:</b> 4-stage lmfit Nelder&ndash;Mead pipeline &mdash; SED-only &rarr; LC-only &rarr;
+            joint (fast) &rarr; joint (full resolution)</li>
+        <li><b>Data:</b> Simultaneous UVOT + XRT + Fermi-LAT SED &amp; Fermi-LAT daily light curve</li>
+        <li><b>Resolution modes:</b> Fast (N<sub>g</sub>=100, &gamma;<sub>max</sub>=10<sup>6</sup>, ~0.3 s/eval)
+            and Full (N<sub>g</sub>=200, &gamma;<sub>max</sub>=10<sup>7</sup>, ~5 s/eval)</li>
+      </ul>
+      <p style="margin-top:10px;">
+        <b>Files:</b>
+        <code>fokker_planck_td.py</code> &mdash; FP solver &nbsp;&bull;&nbsp;
+        <code>flare_sed_models.py</code> &mdash; PyXSPEC model wrapper &nbsp;&bull;&nbsp;
+        <code>fit_flare.py</code> &mdash; 4-stage fitting pipeline
+      </p>
+      <p style="margin-top:14px;">
+        <a href="https://github.com/shahzahir/BLAZAR-TIMEDEPENDENT-SED-LC-FITTING"
+           target="_blank"
+           style="display:inline-block; padding:8px 16px; background:#145A32; color:white;
+                  border-radius:4px; text-decoration:none; font-weight:600; font-size:0.95em;">
+          &#128279; View on GitHub &rarr; BLAZAR-TIMEDEPENDENT-SED-LC-FITTING
+        </a>
+        &nbsp;
+        <a href="https://github.com/shahzahir/BLAZAR-TIMEDEPENDENT-SED-LC-FITTING/blob/main/README.md"
+           target="_blank"
+           style="display:inline-block; padding:8px 16px; background:#f4f7fb; color:#145A32;
+                  border:2px solid #145A32; border-radius:4px; text-decoration:none;
+                  font-weight:600; font-size:0.95em;">
+          &#128196; README &amp; Documentation
+        </a>
+      </p>
+    </div>
+
   </div>
 
    
