@@ -336,6 +336,10 @@ footer {
 </style>
 
 <script>
+function toggleCodeAccess(id) {
+  var el = document.getElementById(id);
+  el.style.display = (el.style.display === "none" || el.style.display === "") ? "block" : "none";
+}
 function showSection(id) {
   var sections = document.getElementsByClassName("section");
   for (var i = 0; i < sections.length; i++) {
@@ -556,23 +560,59 @@ function showSection(id) {
     <div class="card">
       <h3 style="color:#0b3c5d; margin-bottom:10px;">&#128202; Blazar Broadband SED Convolution Code</h3>
       <p>
-        Numerical modeling of broadband spectral energy distributions (SEDs) of blazars using user-defined
-        particle distributions and synchrotron, SSC, and EC cooling. Implemented as a compiled
-        Cython/PyXSPEC additive model (<code>ssccon</code>) enabling statistically rigorous chi-squared
-        fitting within XSPEC.
+        Broadband spectral energy distribution (SED) modelling of blazars with a one-zone leptonic
+        model &mdash; synchrotron, synchrotron self-Compton (SSC) and external Compton (EC) &mdash;
+        fitted to simultaneous optical/UV, X-ray and &gamma;-ray spectra within XSPEC (PyXSPEC).
+        The electron distribution can be chosen from several shapes or defined by the user, can be
+        evolved in time with a Fokker&ndash;Planck equation, and every fit reports the jet power and
+        the physical parameters of the emission region. Installed once as a Python package, it runs
+        from any folder with the <code>sedfit</code> command.
       </p>
-      <p style="margin-top:10px;">
-        <b>Key features:</b> Broken power-law injection &bull; synchrotron + SSC + EC emission &bull;
-        PyXSPEC model interface &bull; multi-group simultaneous fitting (UVOT + XRT + Fermi-LAT)
-      </p>
-      <p style="margin-top:12px;">
-        <a href="https://github.com/shahzahir/BLAZAR-BROADBAND-SED-CONVOLUTION-CODE"
+      <ul style="margin-top:10px; line-height:2.0;">
+        <li><b>Electron distributions:</b> power law, broken power law, log-parabola, power law with
+            exponential cutoff, smoothly broken power law, power law + log-parabola, or user-defined;
+            amplitude set by the equipartition ratio U<sub>e</sub>/U<sub>B</sub></li>
+        <li><b>Radiation:</b> compiled Cython/OpenMP kernel for synchrotron, SSC (Klein&ndash;Nishina)
+            and EC emission, Doppler boosted; model chain
+            <code>tbabs * sscconv * edist_&lt;distribution&gt;</code></li>
+        <li><b>Time evolution (optional):</b> Fokker&ndash;Planck equation with synchrotron + EC cooling,
+            escape and stochastic acceleration, solved exactly along electron characteristics
+            &mdash; constrains the age of a flare</li>
+        <li><b>Fitting:</b> &chi;<sup>2</sup> fits through the instrument responses
+            (UVOT + XRT + Fermi-LAT) with Galactic absorption; staged fits (amplitude &rarr; shape
+            &rarr; jet parameters &Gamma;, R, B, &theta;); interactive XSPEC prompt</li>
+        <li><b>Results:</b> jet powers (magnetic, electron, proton, radiative), U<sub>e</sub>/U<sub>B</sub>,
+            B<sub>eq</sub>, Doppler factor, variability time; live SED plot with synchrotron/SSC/EC
+            components and residuals; data tables and a standalone script to restyle the figure</li>
+      </ul>
+      <p style="margin-top:14px;">
+        <a href="https://github.com/shahzahir/BLAZAR-BROADBAND-SED-MODEL"
            target="_blank"
            style="display:inline-block; padding:8px 16px; background:#1d70b8; color:white;
                   border-radius:4px; text-decoration:none; font-weight:600; font-size:0.95em;">
-          &#128279; View on GitHub &rarr; BLAZAR-BROADBAND-SED-CONVOLUTION-CODE
+          &#128279; View description &amp; example on GitHub
+        </a>
+        &nbsp;
+        <a onclick="toggleCodeAccess('access_sed_conv')" style="cursor:pointer; display:inline-block;
+                  padding:8px 16px; background:#f4f7fb; color:#0b3c5d; border:2px solid #1d70b8;
+                  border-radius:4px; text-decoration:none; font-weight:600; font-size:0.95em;">
+          &#128274; Request access to the code
         </a>
       </p>
+      <div id="access_sed_conv" style="display:none; margin-top:12px; padding:14px 16px;
+           background:#fff8e1; border:1px solid #ffc107; border-radius:6px;">
+        <p style="margin:0 0 8px 0;">
+          <b>&#128274; The source code is available on request.</b>
+          Please ask the owner for permission: write to
+          <a href="mailto:zahir.shah@manipal.edu?subject=Access%20request%3A%20BLAZAR-BROADBAND-SED-CONVOLUTION-CODE&amp;body=Dear%20Dr.%20Shah%2C%0A%0AI%20would%20like%20to%20request%20access%20to%20the%20blazar%20broadband%20SED%20model%20code%20%28BLAZAR-BROADBAND-SED-CONVOLUTION-CODE%29.%0A%0AName%3A%0AAffiliation%3A%0AIntended%20use%3A%0AGitHub%20username%3A%0A%0AThank%20you.">zahir.shah@manipal.edu</a> with your name, affiliation, intended use
+          and your GitHub username, and you will be given access to the code repository.
+        </p>
+        <a href="mailto:zahir.shah@manipal.edu?subject=Access%20request%3A%20BLAZAR-BROADBAND-SED-CONVOLUTION-CODE&amp;body=Dear%20Dr.%20Shah%2C%0A%0AI%20would%20like%20to%20request%20access%20to%20the%20blazar%20broadband%20SED%20model%20code%20%28BLAZAR-BROADBAND-SED-CONVOLUTION-CODE%29.%0A%0AName%3A%0AAffiliation%3A%0AIntended%20use%3A%0AGitHub%20username%3A%0A%0AThank%20you."
+           style="display:inline-block; padding:6px 14px; background:#0b3c5d; color:white;
+                  border-radius:4px; text-decoration:none; font-weight:600; font-size:0.9em;">
+          &#9993; Email the author
+        </a>
+      </div>
     </div>
 
     <!-- Code 2: Time-Dependent SED (complete) -->
