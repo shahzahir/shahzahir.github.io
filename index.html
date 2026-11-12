@@ -703,6 +703,65 @@ function showSection(id) {
       </p>
     </div>
 
+    <!-- Code 4: Swift-XRT light curves & spectra (scripts) -->
+    <div class="card" style="border-left:5px solid #b9770e;">
+      <h3 style="color:#b9770e; margin-bottom:10px;">
+        &#128752; SWIFT-XRT-ANALYSIS &mdash; Swift-XRT Light Curve &amp; Spectrum Script
+        <span style="display:inline-block; margin-left:12px; padding:3px 10px;
+                     background:#e8f5e9; color:#145A32; border:1px solid #4caf50;
+                     border-radius:12px; font-size:0.75em; font-weight:700;
+                     vertical-align:middle;">Python script &middot; open source</span>
+      </h3>
+      <p>
+        An easy, interactive Python script that makes <em>Swift</em>-XRT light curves and spectra
+        with the official UKSSDC XRT product builder API (<code>swifttools</code>). It asks
+        step by step for the source name, the products, the time range, the binning and the
+        redshift, and shows the expected format and an example for every input. It then submits
+        the job, waits for it to finish and downloads ready-to-use results. No HEASoft
+        installation is needed.
+      </p>
+      <ul style="margin-top:10px; line-height:2.0;">
+        <li><b>Input:</b> source names (coordinates looked up automatically, several sources at once),
+            all data, a date range or a list of ObsIDs</li>
+        <li><b>Light curves:</b> snapshot, ObsID, fixed-time or counts binning; soft/hard bands and
+            hardness ratio; time axis in MJD or seconds &rarr; CSV tables + PNG plot</li>
+        <li><b>Spectra:</b> single, per-ObsID, per-snapshot or user-defined time slices; XSPEC fits
+            (power law / APEC / blackbody) with Galactic and intrinsic (redshifted) absorption
+            &rarr; fit table (&Gamma;, N<sub>H</sub>, flux with 90% errors) + XSPEC-ready PHA/ARF/RMF files</li>
+        <li><b>Convenience:</b> saved e-mail, built-in help (<code>?</code>), input checking, and
+            download of earlier jobs by job ID</li>
+      </ul>
+      <p style="margin-top:10px;">
+        <b>Files:</b>
+        <code>xrt_products.py</code> &mdash; interactive script &nbsp;&bull;&nbsp;
+        <code>README.md</code> &mdash; installation, usage &amp; outputs
+      </p>
+      <p style="margin-top:14px;">
+        <a href="https://github.com/shahzahir/SWIFT-XRT-ANALYSIS"
+           target="_blank"
+           style="display:inline-block; padding:8px 16px; background:#b9770e; color:white;
+                  border-radius:4px; text-decoration:none; font-weight:600; font-size:0.95em;">
+          &#128279; View on GitHub &rarr; SWIFT-XRT-ANALYSIS
+        </a>
+        &nbsp;
+        <a href="https://github.com/shahzahir/SWIFT-XRT-ANALYSIS/blob/main/README.md"
+           target="_blank"
+           style="display:inline-block; padding:8px 16px; background:#f4f7fb; color:#b9770e;
+                  border:2px solid #b9770e; border-radius:4px; text-decoration:none;
+                  font-weight:600; font-size:0.95em;">
+          &#128196; README &amp; Usage
+        </a>
+        &nbsp;
+        <a href="https://raw.githubusercontent.com/shahzahir/SWIFT-XRT-ANALYSIS/main/xrt_products.py"
+           download="xrt_products.py"
+           style="display:inline-block; padding:8px 16px; background:#f4f7fb; color:#b9770e;
+                  border:2px solid #b9770e; border-radius:4px; text-decoration:none;
+                  font-weight:600; font-size:0.95em;">
+          &#11015; Download script
+        </a>
+      </p>
+    </div>
+
   </div>
 
    
