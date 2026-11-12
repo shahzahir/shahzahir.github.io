@@ -710,7 +710,7 @@ function showSection(id) {
         <span style="display:inline-block; margin-left:12px; padding:3px 10px;
                      background:#e8f5e9; color:#145A32; border:1px solid #4caf50;
                      border-radius:12px; font-size:0.75em; font-weight:700;
-                     vertical-align:middle;">Python script &middot; open source</span>
+                     vertical-align:middle;">Python script &middot; available on request</span>
       </h3>
       <p>
         An easy, interactive Python script that makes <em>Swift</em>-XRT light curves and spectra
@@ -734,14 +734,14 @@ function showSection(id) {
       <p style="margin-top:10px;">
         <b>Files:</b>
         <code>xrt_products.py</code> &mdash; interactive script &nbsp;&bull;&nbsp;
-        <code>README.md</code> &mdash; installation, usage &amp; outputs
+        <code>README.md</code> &mdash; usage, inputs &amp; outputs (public); source code on request
       </p>
       <p style="margin-top:14px;">
         <a href="https://github.com/shahzahir/SWIFT-XRT-ANALYSIS"
            target="_blank"
            style="display:inline-block; padding:8px 16px; background:#b9770e; color:white;
                   border-radius:4px; text-decoration:none; font-weight:600; font-size:0.95em;">
-          &#128279; View on GitHub &rarr; SWIFT-XRT-ANALYSIS
+          &#128279; View description &amp; example on GitHub
         </a>
         &nbsp;
         <a href="https://github.com/shahzahir/SWIFT-XRT-ANALYSIS/blob/main/README.md"
@@ -752,14 +752,26 @@ function showSection(id) {
           &#128196; README &amp; Usage
         </a>
         &nbsp;
-        <a href="https://raw.githubusercontent.com/shahzahir/SWIFT-XRT-ANALYSIS/main/xrt_products.py"
-           download="xrt_products.py"
-           style="display:inline-block; padding:8px 16px; background:#f4f7fb; color:#b9770e;
-                  border:2px solid #b9770e; border-radius:4px; text-decoration:none;
-                  font-weight:600; font-size:0.95em;">
-          &#11015; Download script
+        <a onclick="toggleCodeAccess('access_swift_xrt')" style="cursor:pointer; display:inline-block;
+                  padding:8px 16px; background:#f4f7fb; color:#b9770e; border:2px solid #b9770e;
+                  border-radius:4px; text-decoration:none; font-weight:600; font-size:0.95em;">
+          &#128274; Request access to the code
         </a>
       </p>
+      <div id="access_swift_xrt" style="display:none; margin-top:12px; padding:14px 16px;
+           background:#fff8e1; border:1px solid #ffc107; border-radius:6px;">
+        <p style="margin:0 0 8px 0;">
+          <b>&#128274; The source code is available on request.</b>
+          Please ask the owner for permission: write to
+          <a href="mailto:zahir.shah@manipal.edu?subject=Access%20request%3A%20SWIFT-XRT-ANALYSIS&amp;body=Dear%20Dr.%20Shah%2C%0A%0AI%20would%20like%20to%20request%20access%20to%20the%20Swift-XRT%20light%20curve%20and%20spectrum%20script%20%28SWIFT-XRT-ANALYSIS%29.%0A%0AName%3A%0AAffiliation%3A%0AIntended%20use%3A%0AGitHub%20username%3A%0A%0AThank%20you.">zahir.shah@manipal.edu</a> with your name, affiliation, intended use
+          and your GitHub username, and you will be given access to the code repository.
+        </p>
+        <a href="mailto:zahir.shah@manipal.edu?subject=Access%20request%3A%20SWIFT-XRT-ANALYSIS&amp;body=Dear%20Dr.%20Shah%2C%0A%0AI%20would%20like%20to%20request%20access%20to%20the%20Swift-XRT%20light%20curve%20and%20spectrum%20script%20%28SWIFT-XRT-ANALYSIS%29.%0A%0AName%3A%0AAffiliation%3A%0AIntended%20use%3A%0AGitHub%20username%3A%0A%0AThank%20you."
+           style="display:inline-block; padding:6px 14px; background:#0b3c5d; color:white;
+                  border-radius:4px; text-decoration:none; font-weight:600; font-size:0.9em;">
+          &#9993; Email the author
+        </a>
+      </div>
     </div>
 
   </div>
